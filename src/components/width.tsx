@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react'
 
-export function Width() {
-  const [width, setWidth] = useState(0)
+export default function Width() {
+  const [width, setWidth] = useState(document.documentElement.clientWidth)
   const [ativo, setAtivo] = useState(false)
 
   useEffect(() => {
