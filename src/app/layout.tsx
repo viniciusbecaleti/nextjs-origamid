@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+
 import { Menu } from '@/components/menu'
 
 import './globals.css'
