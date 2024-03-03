@@ -1,7 +1,11 @@
 import { Produto } from '@/_types/Produto'
 
 export default async function ProdutosPage() {
-  const response = await fetch('https://api.origamid.online/produtos')
+  const response = await fetch('https://api.origamid.online/produtos', {
+    next: {
+      revalidate: 60 * 60 * 24, // 24 horas
+    },
+  })
   const produtos: Produto[] = await response.json()
 
   return (
