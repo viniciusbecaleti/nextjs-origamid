@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import { Produto } from '@/_types/Produto'
 
 export async function ProdutosLista() {
@@ -7,13 +9,15 @@ export async function ProdutosLista() {
 
   const produtos: Produto[] = await response.json()
 
-  await new Promise((resolve) => setTimeout(resolve, Math.random() * 5000))
+  await new Promise((resolve) => setTimeout(resolve, Math.random() * 1000))
 
   return (
     <ul>
       {produtos.map((produto) => (
         <li key={produto.id}>
-          {produto.nome} - R$ {produto.preco}
+          <Link href={`/produtos/${produto.id}`}>
+            {produto.nome} - R$ {produto.preco}
+          </Link>
         </li>
       ))}
     </ul>
