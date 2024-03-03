@@ -10,10 +10,6 @@ export default async function ProdutosPage() {
       <Suspense fallback="carregando...">
         <ProdutosLista />
       </Suspense>
-
-      <Suspense fallback="carregando...">
-        <ProdutosLista />
-      </Suspense>
     </main>
   )
 }

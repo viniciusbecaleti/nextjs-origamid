@@ -46,7 +46,7 @@ export function FormAdicionarProduto() {
       type: 'success',
     })
 
-    router.push('/produtos')
+    router.push('/')
   }
 
   return (
