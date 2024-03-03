@@ -2,6 +2,8 @@
 
 import { FormEvent, useState } from 'react'
 
+import { login } from '@/actions/login'
+
 export function LoginForm() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -14,17 +16,10 @@ export function LoginForm() {
     try {
       setLoading(true)
 
-      const response = await fetch('/api/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, password }),
-      })
-      const data = await response.json()
+      const response = await login(username, password)
 
-      if (!response.ok) {
-        setError(data.message)
+      if (response.status !== 200) {
+        setError(response.message)
         return
       }
 
