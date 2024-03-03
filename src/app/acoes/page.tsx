@@ -1,3 +1,5 @@
+import { Atualizar } from '@/components/atualizar'
+
 interface Acao {
   id: number
   preco_anterior: number
@@ -13,12 +15,15 @@ export default async function Acoes() {
   const response = await fetch('https://api.origamid.online/acoes/lua', {
     next: {
       revalidate: 5,
+      tags: ['acoes'],
     },
   })
   const data: Acao = await response.json()
 
   return (
     <main>
+      <Atualizar />
+
       <h1>{data.simbolo}</h1>
       <h2>{data.preco}</h2>
       <p>{data.atualizada}</p>
