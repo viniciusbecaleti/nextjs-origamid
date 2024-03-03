@@ -1,6 +1,7 @@
 import Link from 'next/link'
 
 import { Produto } from '@/_types/Produto'
+import { Metadata } from 'next'
 
 interface ProdutoPageProps {
   params: {
@@ -17,6 +18,19 @@ export async function generateStaticParams() {
       id: String(produto.id),
     }
   })
+}
+
+export async function generateMetadata({
+  params,
+}: ProdutoPageProps): Promise<Metadata> {
+  const response = await fetch(
+    `https://api.origamid.online/produtos/${params.id}`,
+  )
+  const produto: Produto = await response.json()
+
+  return {
+    title: `Origamid | ${produto.nome}`,
+  }
 }
 
 export default async function ProdutoPage({ params }: ProdutoPageProps) {
