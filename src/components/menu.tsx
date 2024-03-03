@@ -1,6 +1,22 @@
+import { cookies } from 'next/headers'
 import Link from 'next/link'
 
-export function Menu() {
+interface Perfil {
+  autorizado: boolean
+  usuario: string
+}
+
+export async function Menu() {
+  const token = cookies().get('token')?.value
+
+  const response = await fetch('https://api.origamid.online/conta/perfil', {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+
+  const perfil: Perfil = await response.json()
+
   return (
     <ul className="menu">
       <li>
@@ -24,6 +40,13 @@ export function Menu() {
       <li>
         <Link href="/acoes">Ações</Link>
       </li>
+      {!perfil.autorizado && (
+        <li>
+          <Link href="/login">Entrar</Link>
+        </li>
+      )}
+
+      {perfil.autorizado && <li>{perfil.usuario}</li>}
     </ul>
   )
 }
