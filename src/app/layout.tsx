@@ -1,8 +1,10 @@
 import type { Metadata } from 'next'
+import { ToastContainer } from 'react-toastify'
 
 import { Menu } from '@/components/menu'
 
 import './globals.css'
+import 'react-toastify/dist/ReactToastify.css'
 
 export const metadata: Metadata = {
   title: 'Origamid Next',
@@ -19,6 +21,7 @@ export default function RootLayout({
       <body>
         <Menu />
         {children}
+        <ToastContainer />
       </body>
     </html>
   )

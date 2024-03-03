@@ -1,0 +1,20 @@
+import { Produto } from '@/_types/Produto'
+
+export default async function ProdutosPage() {
+  const response = await fetch('https://api.origamid.online/produtos')
+  const produtos: Produto[] = await response.json()
+
+  return (
+    <main>
+      <h1>Produtos</h1>
+
+      <ul>
+        {produtos.map((produto) => (
+          <li key={produto.id}>
+            {produto.nome} - R$ {produto.preco}
+          </li>
+        ))}
+      </ul>
+    </main>
+  )
+}
