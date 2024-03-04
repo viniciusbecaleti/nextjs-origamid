@@ -24,6 +24,7 @@ export default async function AniamaisPage() {
               alt={animal.descricao}
               width={2400}
               height={1600}
+              priority={true}
             />
           </li>
         ))}
