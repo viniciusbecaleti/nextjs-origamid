@@ -8,10 +8,7 @@ export default async function ProdutosLayout({
 }: {
   children: ReactNode
 }) {
-  const response = await fetch('https://api.origamid.online/produtos', {
-    cache: 'no-cache',
-  })
-
+  const response = await fetch('https://api.origamid.online/produtos')
   const produtos: Produto[] = await response.json()
 
   return (
@@ -30,7 +27,7 @@ export default async function ProdutosLayout({
         </ul>
       </nav>
 
-      {children}
+      <div>{children}</div>
     </div>
   )
 }
