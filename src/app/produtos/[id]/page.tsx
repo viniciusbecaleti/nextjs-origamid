@@ -44,7 +44,6 @@ export default async function ProdutoPage({ params }: ProdutoPageProps) {
       <h1>{produto.nome}</h1>
       <h2>R$ {produto.preco}</h2>
       <p>{produto.descricao}</p>
-      <Link href="/produtos">Voltar</Link>
     </main>
   )
 }
