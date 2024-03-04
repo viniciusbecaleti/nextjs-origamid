@@ -127,6 +127,11 @@ img {
   display: block;
 }
 
+img {
+  width: auto;
+  height: auto;
+}
+
 .flex {
   display: flex;
   gap: 1rem;

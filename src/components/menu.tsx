@@ -12,6 +12,9 @@ export async function Menu() {
       <li>
         <Link href="/produtos/adicionar">Adicionar produto</Link>
       </li>
+      <li>
+        <Link href="/animais">Animais</Link>
+      </li>
     </ul>
   )
 }
